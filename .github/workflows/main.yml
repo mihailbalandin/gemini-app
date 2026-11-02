@@ -22,14 +22,13 @@ jobs:
       with:
         channel: 'stable'
 
-    - name: Generate Android files
-      run: flutter create . --platforms=android --org com.example
-
-    - name: Install dependencies
-      run: flutter pub get
+    - name: Clean Flutter and get packages
+      run: |
+        flutter clean
+        flutter pub get
 
     - name: Build APK
-      run: flutter build apk --release
+      run: flutter build apk --release --no-pub
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
