@@ -22,11 +22,8 @@ jobs:
       with:
         channel: 'stable'
 
-    - name: Get packages
+    - name: Install dependencies
       run: flutter pub get
-
-    - name: Create Android platform files
-      run: flutter create . --platforms=android --org com.gemini.standalone
 
     - name: Build APK
       run: flutter build apk --release
