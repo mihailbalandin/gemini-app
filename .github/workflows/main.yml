@@ -22,13 +22,14 @@ jobs:
       with:
         channel: 'stable'
 
-    - name: Clean Flutter and get packages
-      run: |
-        flutter clean
-        flutter pub get
+    - name: Get packages
+      run: flutter pub get
+
+    - name: Create Android platform files
+      run: flutter create . --platforms=android --org com.gemini.standalone
 
     - name: Build APK
-      run: flutter build apk --release --no-pub
+      run: flutter build apk --release
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
